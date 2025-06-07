@@ -711,6 +711,12 @@ void msm5232_device::set_clock(int clock)
 	}
 }
 
+void msm5232_device::ext_vol_w(offs_t offset, uint8_t data)
+{
+    if (m_vgm_log && m_vgm_log->IsValid())
+        m_vgm_log->Write(0, 0x0e + offset, data);
+}
+
 
 //-------------------------------------------------
 //  sound_stream_update - handle a stream update
